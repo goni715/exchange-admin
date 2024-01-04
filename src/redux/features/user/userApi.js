@@ -28,7 +28,7 @@ export const userApi = apiSlice.injectEndpoints({
                 try{
                     const res = await queryFulfilled;
                     if(res?.data?.message === "success"){
-                        SuccessToast("Exchange Status Update Success");
+                        // SuccessToast("Exchange Status Update Success");
                     }
                 }catch(err) {
                     console.log(err)
