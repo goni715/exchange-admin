@@ -28,6 +28,10 @@ const columns = [
         dataIndex: "status",
     },
     {
+        title: "Change Status",
+        dataIndex: "changeStatus",
+    },
+    {
         title: "Reply",
         dataIndex: "reply",
     },
@@ -99,12 +103,20 @@ const ExchangeList = () => {
                 receiveAmount: exchanges[i].receiveAmount,
                 status: (
                     <>
+                        <button className={`text-white cursor-not-allowed font-bold py-2 px-4 rounded ${(exchanges[i].status==="Pending" && "bg-red-500") || (exchanges[i].status==="Cancelled" && "bg-green-500") || (exchanges[i].status==="Timeout" && "bg-blue-500") || (exchanges[i].status==="Completed" && "bg-yellow-500") || (exchanges[i].status==="Processing" && "bg-gray-500") || (exchanges[i].status==="Awaiting Payment" && "bg-cyan-500") || (exchanges[i].status==="Awaiting Confirmation" && "bg-fuchsia-500") || (exchanges[i].status==="Denied" && "bg-lime-500")}`}>
+                            {exchanges[i].status}
+                        </button>
+                    </>
+                ),
+                changeStatus: (
+                    <>
                         <select key={Date.now()} defaultValue={exchanges[i].status} onChange={(e)=>handleUpdateStatus(e.target.value, exchanges[i]?._id)} className="border rounded-md py-2 px-3 focus:outline-none focus:border-blue-500">
                             <option value="Pending">Pending</option>
                             <option value="Processing">Processing</option>
                             <option value="Cancelled">Cancelled</option>
                             <option value="Timeout">Timeout</option>
                             <option value="Denied">Denied</option>
+                            <option value="Completed">Completed</option>
                             <option value="Awaiting Payment">Awaiting Payment</option>
                             <option value="Awaiting Confirmation">Awaiting Confirmation</option>
                         </select>
