@@ -1,7 +1,7 @@
 import {IoMdMenu} from "react-icons/io";
 import logo from '../assets/images/logo.svg';
 import {Link} from "react-router-dom";
-import {getToken, getUserDetails, logout} from "../helper/SessionHelper.js";
+import {getToken, logout} from "../helper/SessionHelper.js";
 
 const Navbar = () => {
 
@@ -20,13 +20,19 @@ const Navbar = () => {
                     </div>
                     <ul className="p-5 z-10 absolute bg-white/80 backdrop-blur w-full left-0 py-4 opacity-0 top-[-400px] transition-all ease-in duration-500 md:p-0 md:flex md:items-center md:space-x-8 md:static md:w-auto md:opacity-100">
                         <Link to="/" className="md:my-0">
-                            <a className="font-medium duration-500 text-gray-900 hover:text-indigo-600" href="">Exchange List</a>
+                            <a className="font-medium duration-500 text-gray-900 hover:text-indigo-600" href="">Exchange-List</a>
                         </Link>
                         <Link to="/user-list" className="md:my-0">
-                            <a className="font-medium duration-500 text-gray-900 hover:text-indigo-600" href="">User List</a>
+                            <a className="font-medium duration-500 text-gray-900 hover:text-indigo-600" href="">User-List</a>
+                        </Link>
+                        <Link to="/history" className="md:my-0">
+                            <a className="font-medium duration-500 text-gray-900 hover:text-indigo-600" href="">History</a>
                         </Link>
                         <Link to="/contact-list" className="my-6 md:my-0">
-                            <a className="font-medium duration-500 text-gray-900 hover:text-indigo-600" href="">Contact List</a>
+                            <a className="font-medium duration-500 text-gray-900 hover:text-indigo-600" href="">Contact-List</a>
+                        </Link>
+                        <Link to="/receive-accounts" className="my-6 md:my-0">
+                            <a className="font-medium duration-500 text-gray-900 hover:text-indigo-600" href="">Receive-Accounts</a>
                         </Link>
                         {getToken() ? (
                             <>

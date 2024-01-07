@@ -1,15 +1,15 @@
 import Navbar from "../components/Navbar.jsx";
-import ExchangeDetails from "../components/ExchangeDetails/ExchangeDetails.jsx";
 import Footer from "../components/Footer.jsx";
+import History from "../components/History/History.jsx";
 
-const ExchangeDetailsPage = () => {
+const HistoryPage = () => {
     return (
         <>
             <Navbar/>
-            <ExchangeDetails/>
+            <History/>
             <Footer/>
         </>
     );
 };
 
-export default ExchangeDetailsPage;
+export default HistoryPage;

@@ -1,10 +1,7 @@
 import {Table} from "antd";
 import {
-    useGetAllExchangeQuery
+     useGetCompletedExchangesQuery,
 } from "../../redux/features/exchange/exchangeApi.js";
-import {useNavigate} from "react-router-dom";
-import moment from "moment/moment";
-
 
 const columns = [
     {
@@ -27,19 +24,10 @@ const columns = [
         title: "Status",
         dataIndex: "status",
     },
-    {
-        title: "Date",
-        dataIndex: "date",
-    },
-    {
-        title: "Details",
-        dataIndex: "details",
-    },
 ];
 
-const ExchangeList = () => {
-    const navigate = useNavigate();
-    const {data, isLoading, isError} = useGetAllExchangeQuery();
+const History = () => {
+    const {data, isLoading, isError} = useGetCompletedExchangesQuery();
     const exchanges = data?.data || [];
 
 
@@ -63,6 +51,8 @@ const ExchangeList = () => {
 
 
 
+
+
     const tableData = [];
 
 
@@ -80,15 +70,7 @@ const ExchangeList = () => {
                             {exchanges[i].status}
                         </button>
                     </>
-                ),
-                date: moment(exchanges[i].createdAt).format('LLLL'),
-                details: (
-                    <>
-                        <button onClick={()=>navigate(`/exchange-details/${exchanges[i]?._id}`)} className="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded">
-                            View Details
-                        </button>
-                    </>
-                ),
+                )
             });
         }
 
@@ -101,7 +83,7 @@ const ExchangeList = () => {
         <>
             {content}
             <section id="main" className="py-10">
-                <h1 className="text-center text-3xl font-bold mb-3">Exchange List</h1>
+                <h1 className="text-center text-3xl font-bold mb-3">Completed Exchanges</h1>
                 <div className="px-12 bg-white w-auto overflow-x-auto">
                     <Table columns={columns} dataSource={tableData} />
                 </div>
@@ -110,4 +92,4 @@ const ExchangeList = () => {
     );
 };
 
-export default ExchangeList;
+export default History;

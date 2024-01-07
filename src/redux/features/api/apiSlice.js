@@ -24,7 +24,7 @@ export const apiSlice = createApi({
         }
         return result;
     },
-    tagTypes: ["ExchangeList", "Users", "ContactList"], //TagS WhiteLists
+    tagTypes: ["ExchangeList", "Exchange", "Users", "ContactList", "CompletedExchangeList"], //TagS WhiteLists
     endpoints: (builder) => ({}),
 })
 

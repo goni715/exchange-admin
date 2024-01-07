@@ -1,10 +1,37 @@
+import {
+    useSendExchangeConfirmEmailMutation,
+    useUpdateExchangeMutation
+} from "../../redux/features/exchange/exchangeApi.js";
 
 const BkashDetails = ({exchange}) => {
-    const {_id, user, email,sendAmount, sendAccount, receiveAccount, receiveAmount, information, transactionOrBatch} = exchange || {};
+    const {_id, user, email,sendAmount, sendAccount, receiveAccount, receiveAmount, information, transactionOrBatch, status} = exchange || {};
     const {name:sendAccountName} = sendAccount[0] || {};
     const {name:receiveAccountName} = receiveAccount[0] || {};
     const {personalNumber, contactNumber} = information || {};
     const {username, email:userEmail} = user[0] || {};
+    const [updateExchange] = useUpdateExchangeMutation();
+    const [sendExchangeConfirmEmail, {isLoading}] = useSendExchangeConfirmEmailMutation();
+
+
+
+    //update status
+    const handleUpdateStatus = (status, id) => {
+        updateExchange({
+            id,
+            data:{
+                status
+            }
+        })
+    }
+
+
+
+    //Send Email
+    const handleSendEmail = (email) => {
+        sendExchangeConfirmEmail({
+            email
+        })
+    }
 
 
     return (
@@ -55,6 +82,24 @@ const BkashDetails = ({exchange}) => {
                         <div className="flex bg-[#f9f9f9] border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
                             <p>Contact Number</p>
                             <p>{contactNumber}</p>
+                        </div>
+                        <div className="flex justify-between mt-8">
+                            <div className="w-1/2">
+                                <label className="block pb-2 font-bold" htmlFor="status">Change Status</label>
+                                <select key={Date.now()} defaultValue={status} onChange={(e)=>handleUpdateStatus(e.target.value,_id)} className="w-full border rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" id="status">
+                                    <option value="Pending">Pending</option>
+                                    <option value="Processing">Processing</option>
+                                    <option value="Cancelled">Cancelled</option>
+                                    <option value="Timeout">Timeout</option>
+                                    <option value="Denied">Denied</option>
+                                    <option value="Completed">Completed</option>
+                                    <option value="Awaiting Payment">Awaiting Payment</option>
+                                    <option value="Awaiting Confirmation">Awaiting Confirmation</option>
+                                </select>
+                            </div>
+                            <button disabled={isLoading} onClick={()=>handleSendEmail(userEmail)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                {isLoading ? "Processing..." : "Confirm"}
+                            </button>
                         </div>
 
                     </div>
