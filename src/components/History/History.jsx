@@ -2,6 +2,7 @@ import {Table} from "antd";
 import {
      useGetCompletedExchangesQuery,
 } from "../../redux/features/exchange/exchangeApi.js";
+import moment from "moment";
 
 const columns = [
     {
@@ -13,12 +14,20 @@ const columns = [
         dataIndex: "id",
     },
     {
+        title: "Transaction or Batch",
+        dataIndex: "transaction",
+    },
+    {
         title: "Send Amount",
         dataIndex: "sendAmount"
     },
     {
         title: "Receive Amount",
         dataIndex: "receiveAmount"
+    },
+    {
+        title: "Date & Time",
+        dataIndex: "date",
     },
     {
         title: "Status",
@@ -62,11 +71,13 @@ const History = () => {
             tableData.push({
                 key: Number(i + 1),
                 id: exchanges[i]?._id,
+                transaction: exchanges[i].transactionOrBatch,
                 sendAmount: exchanges[i].sendAmount,
                 receiveAmount: exchanges[i].receiveAmount,
+                date: moment(exchanges[i].createdAt).format('LLLL'),
                 status: (
                     <>
-                        <button className={`text-white cursor-not-allowed font-bold py-2 px-4 rounded ${(exchanges[i].status==="Pending" && "bg-red-500") || (exchanges[i].status==="Cancelled" && "bg-green-500") || (exchanges[i].status==="Timeout" && "bg-blue-500") || (exchanges[i].status==="Completed" && "bg-yellow-500") || (exchanges[i].status==="Processing" && "bg-gray-500") || (exchanges[i].status==="Awaiting Payment" && "bg-cyan-500") || (exchanges[i].status==="Awaiting Confirmation" && "bg-fuchsia-500") || (exchanges[i].status==="Denied" && "bg-lime-500")}`}>
+                        <button className={`text-white cursor-not-allowed font-bold py-2 px-4 rounded bg-green-500`}>
                             {exchanges[i].status}
                         </button>
                     </>

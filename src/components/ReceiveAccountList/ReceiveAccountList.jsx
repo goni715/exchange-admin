@@ -69,6 +69,7 @@ const ReceiveAccountList = () => {
                                 dispatch(SetReservedValue(receiveAccounts[i].reserved))
                                 dispatch(SetModalOpen(true))
                             }}
+                            key={Date.now()}
                             className={`text-white font-bold py-2 bg-green-500 px-4 rounded-md`}>
                             Edit
                         </button>

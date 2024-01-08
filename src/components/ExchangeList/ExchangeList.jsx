@@ -76,7 +76,7 @@ const ExchangeList = () => {
                 receiveAmount: exchanges[i].receiveAmount,
                 status: (
                     <>
-                        <button className={`text-white cursor-not-allowed font-bold py-2 px-4 rounded ${(exchanges[i].status==="Pending" && "bg-red-500") || (exchanges[i].status==="Cancelled" && "bg-green-500") || (exchanges[i].status==="Timeout" && "bg-blue-500") || (exchanges[i].status==="Completed" && "bg-yellow-500") || (exchanges[i].status==="Processing" && "bg-gray-500") || (exchanges[i].status==="Awaiting Payment" && "bg-cyan-500") || (exchanges[i].status==="Awaiting Confirmation" && "bg-fuchsia-500") || (exchanges[i].status==="Denied" && "bg-lime-500")}`}>
+                        <button className={`text-white cursor-not-allowed font-bold py-2 px-4 rounded ${(exchanges[i].status==="Processing" && "bg-yellow-500") || (exchanges[i].status==="Cancelled" && "bg-lime-500") || (exchanges[i].status==="Timeout" && "bg-blue-500") || (exchanges[i].status==="Completed" && "bg-green-500") || (exchanges[i].status==="Pending" && "bg-gray-500") || (exchanges[i].status==="Awaiting Payment" && "bg-cyan-500") || (exchanges[i].status==="Awaiting Confirmation" && "bg-fuchsia-500") || (exchanges[i].status==="Denied" && "bg-red-500")}`}>
                             {exchanges[i].status}
                         </button>
                     </>
@@ -84,7 +84,7 @@ const ExchangeList = () => {
                 date: moment(exchanges[i].createdAt).format('LLLL'),
                 details: (
                     <>
-                        <button onClick={()=>navigate(`/exchange-details/${exchanges[i]?._id}`)} className="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded">
+                        <button onClick={()=>navigate(`/exchange-details/${exchanges[i]?._id}`)} className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
                             View Details
                         </button>
                     </>

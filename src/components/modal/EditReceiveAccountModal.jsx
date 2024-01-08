@@ -1,14 +1,16 @@
 import {Modal} from "antd";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
 import {selectModalOpen, SetModalOpen} from "../../redux/features/modal/modalSlice.js";
-import {SetReservedValue} from "../../redux/features/account/accountSlice.js";
+import {SetReceiveAccountName, SetReservedValue} from "../../redux/features/account/accountSlice.js";
+import {useUpdateReceiveAccountMutation} from "../../redux/features/account/accountApi.js";
+import {useEffect} from "react";
 
 const EditReceiveAccountModal = () => {
     const dispatch=useDispatch();
-    const navigate = useNavigate()
     const modalOpen = useSelector(selectModalOpen);
-    const {receiveAccountName,reservedValue} = useSelector((state)=>state.account);
+    const {receiveAccountId, receiveAccountName,reservedValue} = useSelector((state)=>state.account);
+    const [updateReceiveAccount, {isSuccess,isLoading}] = useUpdateReceiveAccountMutation();
+
 
 
     const handleOk = () => {
@@ -18,6 +20,30 @@ const EditReceiveAccountModal = () => {
         dispatch(SetModalOpen(false));
     };
 
+
+    useEffect(()=>{
+       if(isSuccess){
+           dispatch(SetModalOpen(false));
+       }
+    },[isSuccess, dispatch])
+
+
+
+    //update receive account
+    const handleUpdate = () => {
+        updateReceiveAccount({
+            id:receiveAccountId,
+            data:{
+                name:receiveAccountName,
+                reserved:reservedValue
+            }
+        })
+    }
+
+
+
+
+
     return (
         <>
             <Modal title="Edit Receive Account" open={modalOpen} onOk={handleOk}>
@@ -26,7 +52,7 @@ const EditReceiveAccountModal = () => {
                         <label className="block pb-2" htmlFor="transaction">
                             Receive Account Name
                         </label>
-                        <input value={receiveAccountName} readOnly className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md" type="text" id="transaction"/>
+                        <input onChange={(e)=>dispatch(SetReceiveAccountName(e.target.value))} value={receiveAccountName} className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md" type="text" id="transaction"/>
                     </div>
                     <div className="pt-2">
                         <label className="block pb-2" htmlFor="transaction">
@@ -38,8 +64,8 @@ const EditReceiveAccountModal = () => {
                         <button onClick={handleCancel} className="w-1/2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                             Cancel
                         </button>
-                        <button className="w-1/2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                           Update
+                        <button onClick={handleUpdate} disabled={isLoading} className="w-1/2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            {isLoading ? "Processing..." : "Save"}
                         </button>
                     </div>
                 </div>

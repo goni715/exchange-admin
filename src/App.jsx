@@ -11,6 +11,8 @@ import PrivateRoute from "./routes/PrivateRoute.jsx";
 import PublicRoute from "./routes/PublicRoute.jsx";
 import HistoryPage from "./pages/HistoryPage.jsx";
 import ReceiveAccountListPage from "./pages/ReceiveAccountListPage.jsx";
+import InformationPage from "./pages/InformationPage.jsx";
+import EditInformationPage from "./pages/EditInformationPage.jsx";
 
 const App = () => {
     return (
@@ -23,6 +25,8 @@ const App = () => {
                   <Route exact path="/history" element={<PrivateRoute> <HistoryPage/> </PrivateRoute>} />
                   <Route exact path="/exchange-details/:id" element={<PrivateRoute> <ExchangeDetailsPage/> </PrivateRoute>} />
                   <Route exact path="/receive-accounts" element={<PrivateRoute> <ReceiveAccountListPage/> </PrivateRoute>} />
+                  <Route exact path="/information" element={<PrivateRoute> <InformationPage/> </PrivateRoute>} />
+                  <Route exact path="/edit-information" element={<PrivateRoute> <EditInformationPage/> </PrivateRoute>} />
 
                   <Route exact path="/login" element={<PublicRoute> <LoginPage/> </PublicRoute>}/>
                   <Route exact path="/register" element={<PublicRoute> <RegisterPage/> </PublicRoute>}/>

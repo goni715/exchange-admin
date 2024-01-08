@@ -1,5 +1,5 @@
 import {apiSlice} from "../api/apiSlice.js";
-import {ErrorToast} from "../../../helper/ValidationHelper.js";
+import {ErrorToast, SuccessToast} from "../../../helper/ValidationHelper.js";
 import {SetMinimumValue, SetReservedValue} from "../rate/rateSlice.js";
 
 
@@ -20,6 +20,7 @@ export const accountApi = apiSlice.injectEndpoints({
         }),
         getAllReceiveAccount: builder.query({
             query: () => `/account/get-all-receive-account`,
+            providesTags: ["ReceiveAccounts"],
             keepUnusedDataFor: 600,
             async onQueryStarted(arg, {queryFulfilled, }){
                 try{
@@ -64,9 +65,34 @@ export const accountApi = apiSlice.injectEndpoints({
                     console.log(err);
                 }
             },
-        })
+        }),
+        updateReceiveAccount: builder.mutation({
+            query: ({id,data}) => ({
+                url: `/account/update-receive-account/${id}`,
+                method: "PUT",
+                body: data
+            }),
+            invalidatesTags: (result, error, arg) => [
+                "ReceiveAccounts",
+            ],
+            async onQueryStarted(arg, {queryFulfilled}){
+                try{
+                    const res = await queryFulfilled;
+                    if(res?.data?.message === "success"){
+                        SuccessToast("Update Success");
+                    }
+                }catch(err) {
+                    console.log(err)
+                    if(err?.error?.data?.data?.keyPattern){
+                        if(err?.error?.data?.data?.keyPattern['name'] === 1){
+                            ErrorToast("This Account Already Exist")
+                        }
+                    }
+                }
+            }
+        }),
     }),
 })
 
 
-export const {useGetAllSendAccountQuery, useGetAllReceiveAccountQuery, useGetSendAccountQuery, useGetReceiveAccountQuery} = accountApi;
+export const {useGetAllSendAccountQuery, useGetAllReceiveAccountQuery, useGetSendAccountQuery, useGetReceiveAccountQuery, useUpdateReceiveAccountMutation} = accountApi;
