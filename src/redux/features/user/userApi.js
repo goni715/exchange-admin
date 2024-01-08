@@ -1,5 +1,5 @@
 import {apiSlice} from "../api/apiSlice.js";
-import {ErrorToast, SuccessToast} from "../../../helper/ValidationHelper.js";
+import {ErrorToast} from "../../../helper/ValidationHelper.js";
 
 
 export const userApi = apiSlice.injectEndpoints({
