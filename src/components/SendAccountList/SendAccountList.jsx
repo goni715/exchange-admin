@@ -1,15 +1,17 @@
 import {Table} from "antd";
 import {
-    useGetAllReceiveAccountQuery,
-    useUpdateReceiveAccountDisabledMutation
+    useGetAllReceiveAccountQuery, useGetAllSendAccountQuery,
+    useUpdateReceiveAccountDisabledMutation, useUpdateSendAccountDisabledMutation
 } from "../../redux/features/account/accountApi.js";
 import {useDispatch} from "react-redux";
-import {SetModalOpen} from "../../redux/features/modal/modalSlice.js";
+import {SetModalOpen, SetSendAccountModalOpen} from "../../redux/features/modal/modalSlice.js";
 import EditReceiveAccountModal from "../modal/EditReceiveAccountModal.jsx";
 import {
+    SetMinimumValue,
     SetReceiveAccountId,
-    SetReceiveAccountName, SetReservedValue
+    SetReceiveAccountName, SetReservedValue, SetSendAccountId, SetSendAccountName
 } from "../../redux/features/account/accountSlice.js";
+import EditSendAccountModal from "../modal/EditSendAccountModal.jsx";
 
 const columns = [
     {
@@ -21,8 +23,8 @@ const columns = [
         dataIndex: "name",
     },
     {
-        title: "Reserved",
-        dataIndex: "reserve",
+        title: "Minimum Exchange",
+        dataIndex: "minimum",
     },
     {
         title: "Action",
@@ -34,11 +36,11 @@ const columns = [
     }
 ];
 
-const ReceiveAccountList = () => {
+const SendAccountList = () => {
     const dispatch = useDispatch();
-    const {data, isLoading, isError} = useGetAllReceiveAccountQuery();
-    const receiveAccounts = data?.data || [];
-    const [updateReceiveAccountDisabled] = useUpdateReceiveAccountDisabledMutation();
+    const {data, isLoading, isError} = useGetAllSendAccountQuery();
+    const sendAccounts = data?.data || [];
+    const [updateSendAccountDisabled] = useUpdateSendAccountDisabledMutation();
 
 
 
@@ -63,7 +65,7 @@ const ReceiveAccountList = () => {
 
     //handle enabled-disabled
     const handleEnabledDisabled = (hidden, id) => {
-        updateReceiveAccountDisabled({
+        updateSendAccountDisabled({
             id,
             data:{
                 hidden
@@ -75,20 +77,20 @@ const ReceiveAccountList = () => {
 
 
 
-    if (!isLoading && !isError && receiveAccounts?.length > 0) {
-        for (let i = 0; i < receiveAccounts.length; i++) {
+    if (!isLoading && !isError && sendAccounts?.length > 0) {
+        for (let i = 0; i < sendAccounts.length; i++) {
             tableData.push({
                 key: Number(i + 1),
-                name: receiveAccounts[i]?.name,
-                reserve: receiveAccounts[i]?.reserved,
+                name: sendAccounts[i]?.name,
+                minimum: sendAccounts[i]?.minimum,
                 action: (
                     <>
                         <button
                             onClick={()=>{
-                                dispatch(SetReceiveAccountId(receiveAccounts[i]?._id))
-                                dispatch(SetReceiveAccountName(receiveAccounts[i]?.name))
-                                dispatch(SetReservedValue(receiveAccounts[i]?.reserved))
-                                dispatch(SetModalOpen(true))
+                                dispatch(SetSendAccountId(sendAccounts[i]?._id))
+                                dispatch(SetSendAccountName(sendAccounts[i]?.name))
+                                dispatch(SetMinimumValue(sendAccounts[i]?.minimum))
+                                dispatch(SetSendAccountModalOpen(true))
                             }}
                             key={Date.now()}
                             className={`text-white font-bold py-2 bg-green-500 px-4 rounded-md`}>
@@ -98,7 +100,7 @@ const ReceiveAccountList = () => {
                 ),
                 active: (
                     <>
-                        <select key={Date.now()} defaultValue={receiveAccounts[i]?.hidden} onChange={(e)=>handleEnabledDisabled(e.target.value, receiveAccounts[i]?._id)} className="border rounded-md py-2 px-4 focus:outline-none focus:border-blue-500">
+                        <select key={Date.now()} defaultValue={sendAccounts[i]?.hidden} onChange={(e)=>handleEnabledDisabled(e.target.value, sendAccounts[i]?._id)} className="border rounded-md py-2 px-4 focus:outline-none focus:border-blue-500">
                             <option value={true}>Disabled</option>
                             <option value={false}>Enabled</option>
                         </select>
@@ -116,15 +118,15 @@ const ReceiveAccountList = () => {
         <>
             {content}
             <section id="main" className="py-10">
-                <h1 className="text-center font-bold text-3xl mb-3">Receive Account List</h1>
+                <h1 className="text-center font-bold text-3xl mb-3">Send Account List</h1>
                 <div className="px-12 bg-white w-auto overflow-x-auto">
                     <Table columns={columns} dataSource={tableData} />
                 </div>
             </section>
 
-            <EditReceiveAccountModal/>
+            <EditSendAccountModal/>
         </>
     );
 };
 
-export default ReceiveAccountList;
+export default SendAccountList;

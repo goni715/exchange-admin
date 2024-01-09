@@ -31,6 +31,9 @@ const Navbar = () => {
                         <Link to="/contact-list" className="my-6 md:my-0">
                             <a className="font-medium duration-500 text-gray-900 hover:text-indigo-600" href="">Contact-List</a>
                         </Link>
+                        <Link to="/send-accounts" className="my-6 md:my-0">
+                            <a className="font-medium duration-500 text-gray-900 hover:text-indigo-600" href="">Send-Accounts</a>
+                        </Link>
                         <Link to="/receive-accounts" className="my-6 md:my-0">
                             <a className="font-medium duration-500 text-gray-900 hover:text-indigo-600" href="">Receive-Accounts</a>
                         </Link>

@@ -3,8 +3,9 @@ import {createSlice} from "@reduxjs/toolkit";
 export const accountSlice=createSlice({
     name:'account',
     initialState:{
-        sendAccountId:"658d2e2a61d015e063fd92dd",
+        sendAccountId:"",
         sendAccountName:"",
+        minimumValue:"",
         receiveAccountId:"",
         receiveAccountName:"",
         reservedValue:"",
@@ -15,6 +16,9 @@ export const accountSlice=createSlice({
         },
         SetSendAccountId:(state,action)=>{
             state.sendAccountId=action.payload
+        },
+        SetMinimumValue:(state,action)=>{
+            state.minimumValue=action.payload
         },
         SetReceiveAccountId:(state,action)=>{
             state.receiveAccountId=action.payload
@@ -28,5 +32,5 @@ export const accountSlice=createSlice({
 
     }
 })
-export  const {SetReceiveAccountId, SetReceiveAccountName, SetReservedValue}=accountSlice.actions;
+export  const {SetSendAccountName, SetSendAccountId, SetMinimumValue, SetReceiveAccountId, SetReceiveAccountName, SetReservedValue}=accountSlice.actions;
 export const accountSliceReducer = accountSlice.reducer;
