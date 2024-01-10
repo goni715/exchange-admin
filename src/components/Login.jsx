@@ -56,11 +56,6 @@ const Login = () => {
                             </button>
                         </div>
 
-                        <div className="flex justify-end mt-10">
-                            <span onClick={()=>navigate("/forgot-password")} className="cursor-pointer text-[#b9b9b9] hover:text-[#0090D4] transition duration-500">
-                                Forgot password?
-                            </span>
-                        </div>
                     </div>
                     <div className="w-2/5 mt-5">
                         <button onClick={()=>navigate('/register')} className="bg-[#0072bc] px-12 py-4 title text-white text-lg rounded  w-full">

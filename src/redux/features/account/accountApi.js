@@ -1,6 +1,5 @@
 import {apiSlice} from "../api/apiSlice.js";
 import {ErrorToast, SuccessToast} from "../../../helper/ValidationHelper.js";
-import {SetMinimumValue, SetReservedValue} from "../rate/rateSlice.js";
 
 
 export const accountApi = apiSlice.injectEndpoints({
@@ -26,40 +25,6 @@ export const accountApi = apiSlice.injectEndpoints({
             async onQueryStarted(arg, {queryFulfilled, }){
                 try{
                     const res = await queryFulfilled;
-                }catch(err) {
-                    ErrorToast("Something Went Wrong!");
-                    //do nothing
-                    console.log(err);
-                }
-            },
-        }),
-        getReceiveAccount: builder.query({
-            query: (id) => `/account/get-receive-account/${id}`,
-            keepUnusedDataFor:false,
-            async onQueryStarted(arg, {queryFulfilled, dispatch }){
-                try{
-                    const res = await queryFulfilled;
-                    const data = res?.data?.result;
-                    if(data){
-                        dispatch(SetReservedValue(data?.reserved));
-                    }
-                }catch(err) {
-                    ErrorToast("Something Went Wrong!");
-                    //do nothing
-                    console.log(err);
-                }
-            },
-        }),
-        getSendAccount: builder.query({
-            query: (id) => `/account/get-send-account/${id}`,
-            keepUnusedDataFor:false,
-            async onQueryStarted(arg, {queryFulfilled, dispatch }){
-                try{
-                    const res = await queryFulfilled;
-                    const data = res?.data?.result;
-                    if(data){
-                        dispatch(SetMinimumValue(data?.minimum));
-                    }
                 }catch(err) {
                     ErrorToast("Something Went Wrong!");
                     //do nothing
@@ -161,4 +126,4 @@ export const accountApi = apiSlice.injectEndpoints({
 })
 
 
-export const {useGetAllSendAccountQuery, useGetAllReceiveAccountQuery, useGetSendAccountQuery, useGetReceiveAccountQuery, useUpdateReceiveAccountMutation, useUpdateReceiveAccountDisabledMutation, useUpdateSendAccountMutation, useUpdateSendAccountDisabledMutation} = accountApi;
+export const {useGetAllSendAccountQuery, useGetAllReceiveAccountQuery, useUpdateReceiveAccountMutation, useUpdateReceiveAccountDisabledMutation, useUpdateSendAccountMutation, useUpdateSendAccountDisabledMutation} = accountApi;

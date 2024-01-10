@@ -4,12 +4,12 @@ import {
     useUpdateReceiveAccountDisabledMutation
 } from "../../redux/features/account/accountApi.js";
 import {useDispatch} from "react-redux";
-import {SetModalOpen} from "../../redux/features/modal/modalSlice.js";
 import EditReceiveAccountModal from "../modal/EditReceiveAccountModal.jsx";
 import {
     SetReceiveAccountId,
     SetReceiveAccountName, SetReservedValue
 } from "../../redux/features/account/accountSlice.js";
+import {SetReceiveAccountModalOpen} from "../../redux/features/modal/modalSlice.js";
 
 const columns = [
     {
@@ -21,7 +21,7 @@ const columns = [
         dataIndex: "name",
     },
     {
-        title: "Reserved",
+        title: "Reserved Amount",
         dataIndex: "reserve",
     },
     {
@@ -88,7 +88,7 @@ const ReceiveAccountList = () => {
                                 dispatch(SetReceiveAccountId(receiveAccounts[i]?._id))
                                 dispatch(SetReceiveAccountName(receiveAccounts[i]?.name))
                                 dispatch(SetReservedValue(receiveAccounts[i]?.reserved))
-                                dispatch(SetModalOpen(true))
+                                dispatch(SetReceiveAccountModalOpen(true))
                             }}
                             key={Date.now()}
                             className={`text-white font-bold py-2 bg-green-500 px-4 rounded-md`}>

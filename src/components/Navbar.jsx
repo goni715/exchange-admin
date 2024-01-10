@@ -37,6 +37,9 @@ const Navbar = () => {
                         <Link to="/receive-accounts" className="my-6 md:my-0">
                             <a className="font-medium duration-500 text-gray-900 hover:text-indigo-600" href="">Receive-Accounts</a>
                         </Link>
+                        <Link to="/rate-list" className="my-6 md:my-0">
+                            <a className="font-medium duration-500 text-gray-900 hover:text-indigo-600" href="">Rate-List</a>
+                        </Link>
                         <Link to="/information" className="my-6 md:my-0">
                             <a className="font-medium duration-500 text-gray-900 hover:text-indigo-600" href="">Information</a>
                         </Link>

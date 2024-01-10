@@ -1,15 +1,13 @@
 import {Table} from "antd";
 import {
-    useGetAllReceiveAccountQuery, useGetAllSendAccountQuery,
-    useUpdateReceiveAccountDisabledMutation, useUpdateSendAccountDisabledMutation
+     useGetAllSendAccountQuery,
+     useUpdateSendAccountDisabledMutation
 } from "../../redux/features/account/accountApi.js";
 import {useDispatch} from "react-redux";
-import {SetModalOpen, SetSendAccountModalOpen} from "../../redux/features/modal/modalSlice.js";
-import EditReceiveAccountModal from "../modal/EditReceiveAccountModal.jsx";
+import {SetSendAccountModalOpen} from "../../redux/features/modal/modalSlice.js";
 import {
     SetMinimumValue,
-    SetReceiveAccountId,
-    SetReceiveAccountName, SetReservedValue, SetSendAccountId, SetSendAccountName
+    SetSendAccountId, SetSendAccountName
 } from "../../redux/features/account/accountSlice.js";
 import EditSendAccountModal from "../modal/EditSendAccountModal.jsx";
 

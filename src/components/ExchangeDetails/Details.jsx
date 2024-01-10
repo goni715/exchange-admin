@@ -8,37 +8,37 @@ import BracBankDetails from "./BracBankDetails.jsx";
 
 const Details = ({receiveAccountId, exchange}) => {
 
-    if(receiveAccountId === "658d2f2161d015e063fd92f4"){
+    if(receiveAccountId === "659d8a30510cf0bdd944d2ca"){
         return(
             <RocketDetails exchange={exchange}/>
         )
     }
-    if(receiveAccountId === "658d2f3a61d015e063fd92f8"){
+    if(receiveAccountId === "659d8a51510cf0bdd944d2ce"){
         return(
             <DutchBanglaDetails exchange={exchange}/>
         )
     }
-    if(receiveAccountId === "658d2f0f61d015e063fd92f1"){
+    if(receiveAccountId === "659d8a02510cf0bdd944d2c6"){
         return(
             <NagadDetails exchange={exchange}/>
         )
     }
-    if(receiveAccountId === "658d2f7561d015e063fd92ff"){
+    if(receiveAccountId === "659d8963510cf0bdd944d2ba"){
         return(
             <BkashDetails exchange={exchange}/>
         )
     }
-    if(receiveAccountId === "658d2f5161d015e063fd92fb"){
+    if(receiveAccountId === "659d8995510cf0bdd944d2be"){
         return(
             <CityBankDetails exchange={exchange}/>
         )
     }
-    if(receiveAccountId === "65930fa44798ee030c6d54f3"){
+    if(receiveAccountId === "659d8a92510cf0bdd944d2d2"){
         return(
             <PerfectMoneyDetails exchange={exchange}/>
         )
     }
-    if(receiveAccountId === "6593e3150bf1828210763a67"){
+    if(receiveAccountId === "659d891c510cf0bdd944d2b4"){
         return(
             <BracBankDetails exchange={exchange}/>
         )

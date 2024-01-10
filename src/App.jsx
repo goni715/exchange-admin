@@ -14,6 +14,7 @@ import ReceiveAccountListPage from "./pages/ReceiveAccountListPage.jsx";
 import InformationPage from "./pages/InformationPage.jsx";
 import EditInformationPage from "./pages/EditInformationPage.jsx";
 import SendAccountListPage from "./pages/SendAccountListPage.jsx";
+import RateListPage from "./pages/RateListPage.jsx";
 
 const App = () => {
     return (
@@ -27,6 +28,7 @@ const App = () => {
                   <Route exact path="/exchange-details/:id" element={<PrivateRoute> <ExchangeDetailsPage/> </PrivateRoute>} />
                   <Route exact path="/send-accounts" element={<PrivateRoute> <SendAccountListPage/> </PrivateRoute>} />
                   <Route exact path="/receive-accounts" element={<PrivateRoute> <ReceiveAccountListPage/> </PrivateRoute>} />
+                  <Route exact path="/rate-list" element={<PrivateRoute> <RateListPage/> </PrivateRoute>} />
                   <Route exact path="/information" element={<PrivateRoute> <InformationPage/> </PrivateRoute>} />
                   <Route exact path="/edit-information" element={<PrivateRoute> <EditInformationPage/> </PrivateRoute>} />
 

@@ -34,11 +34,7 @@ const columns = [
     {
         title: "Details",
         dataIndex: "details",
-    },
-    {
-        title: "send Account Name",
-        dataIndex: "name",
-    },
+    }
 ];
 
 const ExchangeList = () => {
@@ -78,7 +74,6 @@ const ExchangeList = () => {
                 id: exchanges[i]?._id,
                 sendAmount: exchanges[i].sendAmount,
                 receiveAmount: exchanges[i].receiveAmount,
-                name: exchanges[i]?.sendAccount[0]?.name,
                 status: (
                     <>
                         <button className={`text-white cursor-not-allowed font-bold py-2 px-4 rounded ${(exchanges[i].status==="Processing" && "bg-yellow-500") || (exchanges[i].status==="Cancelled" && "bg-lime-500") || (exchanges[i].status==="Timeout" && "bg-blue-500") || (exchanges[i].status==="Completed" && "bg-green-500") || (exchanges[i].status==="Pending" && "bg-gray-500") || (exchanges[i].status==="Awaiting Payment" && "bg-cyan-500") || (exchanges[i].status==="Awaiting Confirmation" && "bg-fuchsia-500") || (exchanges[i].status==="Denied" && "bg-red-500")}`}>

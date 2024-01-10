@@ -1,29 +1,29 @@
 import {Modal} from "antd";
 import {useDispatch, useSelector} from "react-redux";
-import {selectModalOpen, SetModalOpen} from "../../redux/features/modal/modalSlice.js";
 import {SetReceiveAccountName, SetReservedValue} from "../../redux/features/account/accountSlice.js";
 import {useUpdateReceiveAccountMutation} from "../../redux/features/account/accountApi.js";
 import {useEffect} from "react";
+import {selectReceiveAccountModalOpen, SetReceiveAccountModalOpen} from "../../redux/features/modal/modalSlice.js";
 
 const EditReceiveAccountModal = () => {
     const dispatch=useDispatch();
-    const modalOpen = useSelector(selectModalOpen);
+    const modalOpen = useSelector(selectReceiveAccountModalOpen);
     const {receiveAccountId, receiveAccountName,reservedValue} = useSelector((state)=>state.account);
     const [updateReceiveAccount, {isSuccess,isLoading}] = useUpdateReceiveAccountMutation();
 
 
 
     const handleOk = () => {
-        dispatch(SetModalOpen(false));
+        dispatch(SetReceiveAccountModalOpen(false));
     };
     const handleCancel = () => {
-        dispatch(SetModalOpen(false));
+        dispatch(SetReceiveAccountModalOpen(false));
     };
 
 
     useEffect(()=>{
        if(isSuccess){
-           dispatch(SetModalOpen(false));
+           dispatch(SetReceiveAccountModalOpen(false));
        }
     },[isSuccess, dispatch])
 
