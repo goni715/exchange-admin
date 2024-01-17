@@ -107,7 +107,7 @@ const DutchBanglaDetails = ({exchange}) => {
                                 </select>
                             </div>
                             <button disabled={isLoading} onClick={()=>handleSendEmail(userEmail)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                {isLoading ? "Processing..." : "Confirm"}
+                                {isLoading ? "Sending..." : "Send Confirmation Email"}
                             </button>
                         </div>
 
