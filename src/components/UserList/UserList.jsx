@@ -1,5 +1,5 @@
 import {Table} from "antd";
-import {useGetUsersQuery, useUpdateUserMutation} from "../../redux/features/user/userApi.js";
+import {useGetUsersQuery, useMakeAdminMutation, useRemoveAdminMutation} from "../../redux/features/user/userApi.js";
 
 const columns = [
     {
@@ -23,7 +23,8 @@ const columns = [
 const UserList = () => {
     const {data, isLoading, isError} = useGetUsersQuery();
     const users = data?.data || [];
-    const [updateUser] = useUpdateUserMutation();
+    const [makeAdmin,{isLoading:loading}] = useMakeAdminMutation();
+    const [removeAdmin, {isLoading:removeLoading}] = useRemoveAdminMutation();
 
 
 
@@ -47,13 +48,12 @@ const UserList = () => {
 
 
     //update status
-    const handleUpdateRole = (role, id) => {
-        updateUser({
-            id,
-            data:{
-                role
-            }
-        })
+    const handleMakeAdmin = (id) => {
+        makeAdmin(id)
+    }
+
+    const handleRemoveAdmin = (id) => {
+        removeAdmin(id)
     }
 
 
@@ -62,16 +62,16 @@ const UserList = () => {
         for (let i = 0; i < users.length; i++) {
             tableData.push({
                 key: Number(i + 1),
-                username: users[i].username,
-                email: users[i].email,
+                username: users[i]?.username,
+                email: users[i]?.email,
                 action: (
                     <>
-                        {users[i].role ==="user" ? (
-                                <button onClick={()=>handleUpdateRole("admin", users[i]._id)} className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+                        {users[i]?.role ==="user" ? (
+                                <button disabled={loading} onClick={()=>handleMakeAdmin(users[i]?._id)} className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
                                     Make Admin
                                 </button>
                             ) : (
-                                <button onClick={()=>handleUpdateRole("user", users[i]._id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                <button disabled={removeLoading} onClick={()=>handleRemoveAdmin(users[i]?._id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                                     Remove Admin
                                 </button>
                             )

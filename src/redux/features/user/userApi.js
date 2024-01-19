@@ -17,20 +17,40 @@ export const userApi = apiSlice.injectEndpoints({
                 }
             },
         }),
-        updateUser: builder.mutation({
-            query: ({id,data}) => ({
-                url: `/auth/update-user/${id}`,
-                method: "PUT",
-                body: data
+        makeAdmin: builder.mutation({
+            query: (id) => ({
+                url: `/auth/make-admin/${id}`,
+                method: "PUT"
             }),
             invalidatesTags: ["Users"],
             async onQueryStarted(arg, {queryFulfilled}){
                 try{
                     const res = await queryFulfilled;
                     if(res?.data?.message === "success"){
-                        // SuccessToast("Exchange Status Update Success");
+                        // SuccessToast(" Success");
                     }
                 }catch(err) {
+                    console.log(err)
+                }
+            }
+        }),
+        removeAdmin: builder.mutation({
+            query: (id) => ({
+                url: `/auth/remove-admin/${id}`,
+                method: "PUT"
+            }),
+            invalidatesTags: ["Users"],
+            async onQueryStarted(arg, {queryFulfilled}){
+                try{
+                    const res = await queryFulfilled;
+                    if(res?.data?.message === "success"){
+                        // SuccessToast(" Success");
+                    }
+                }catch(err) {
+                    let status = err?.error?.status;
+                    if(status===400) {
+                        ErrorToast("minimum have to be an one admin");
+                    }
                     console.log(err)
                 }
             }
@@ -39,4 +59,4 @@ export const userApi = apiSlice.injectEndpoints({
 })
 
 
-export const {useGetUsersQuery, useUpdateUserMutation} = userApi;
+export const {useGetUsersQuery, useMakeAdminMutation, useRemoveAdminMutation} = userApi;

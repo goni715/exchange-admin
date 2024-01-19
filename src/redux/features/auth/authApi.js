@@ -1,6 +1,6 @@
 import {apiSlice} from "../api/apiSlice.js";
 import { SuccessToast} from "../../../helper/ValidationHelper.js";
-import {setToken, setUserDetails} from "../../../helper/SessionHelper.js";
+import {setToken} from "../../../helper/SessionHelper.js";
 import {SetForgotError, SetLoginError, SetRegisterError, SetResetError} from "./authSlice.js";
 
 
