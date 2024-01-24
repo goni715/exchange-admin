@@ -1,5 +1,11 @@
 import {Table} from "antd";
-import {useGetUsersQuery, useMakeAdminMutation, useRemoveAdminMutation} from "../../redux/features/user/userApi.js";
+import {
+    useDeleteUserMutation,
+    useGetUsersQuery,
+    useMakeAdminMutation,
+    useRemoveAdminMutation
+} from "../../redux/features/user/userApi.js";
+import {DeleteAlert} from "../../helper/DeleteAlert.js";
 
 const columns = [
     {
@@ -17,6 +23,10 @@ const columns = [
     {
         title: "Action",
         dataIndex: "action",
+    },
+    {
+        title: "Remove",
+        dataIndex: "remove",
     }
 ];
 
@@ -25,6 +35,8 @@ const UserList = () => {
     const users = data?.data || [];
     const [makeAdmin,{isLoading:loading}] = useMakeAdminMutation();
     const [removeAdmin, {isLoading:removeLoading}] = useRemoveAdminMutation();
+    const [deleteUser] = useDeleteUserMutation();
+
 
 
 
@@ -52,9 +64,23 @@ const UserList = () => {
         makeAdmin(id)
     }
 
-    const handleRemoveAdmin = (id) => {
-        removeAdmin(id)
+ const handleRemoveAdmin = (id) => {
+     removeAdmin(id)
+ }
+
+
+
+
+
+//DeleteUser
+    const DeleteUser = async (id) => {
+        let Result = await DeleteAlert();
+        if(Result.isConfirmed ===true){
+            deleteUser(id)
+        }
     }
+
+
 
 
 
@@ -79,12 +105,16 @@ const UserList = () => {
 
                     </>
                 ),
+                remove: (
+                    <button onClick={() => DeleteUser(users[i]?._id)}
+                            className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                        Delete User
+                    </button>
+                )
             });
         }
 
     }
-
-
 
 
     return (

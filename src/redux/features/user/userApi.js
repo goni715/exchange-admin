@@ -55,8 +55,25 @@ export const userApi = apiSlice.injectEndpoints({
                 }
             }
         }),
+        deleteUser: builder.mutation({
+            query: (id) => ({
+                url: `/auth/delete-user/${id}`,
+                method: "DELETE"
+            }),
+            invalidatesTags: ["Users"],
+            async onQueryStarted(arg, {queryFulfilled}){
+                try{
+                    const res = await queryFulfilled;
+                    if(res?.data?.message === "success"){
+                        // SuccessToast(" Success");
+                    }
+                }catch(err) {
+                    console.log(err)
+                }
+            }
+        }),
     }),
 })
 
 
-export const {useGetUsersQuery, useMakeAdminMutation, useRemoveAdminMutation} = userApi;
+export const {useGetUsersQuery, useMakeAdminMutation, useRemoveAdminMutation, useDeleteUserMutation} = userApi;
