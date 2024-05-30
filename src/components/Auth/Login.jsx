@@ -35,9 +35,8 @@ const Login = () => {
 
     return (
         <>
-            <section id="main" className="bg-[#f7f7f7] py-20">
-                <div className="container md:px-12 flex flex-col items-center ">
-                    <div className="bg-white px-14 py-12 w-2/5">
+            <section id="main" className="bg-[#f7f7f7] min-h-screen flex items-center justify-center">
+                    <div className="bg-white px-4 md:px-14 py-12 w-[90%] sm:w-[80%] md:w-[600px] shadow-md rounded-md">
                         <h1 className="text-[#0090D4] text-center title mb-5 font-bold text-3xl">Admin Login</h1>
                         {error && (
                                 <Error message={error}/>
@@ -52,19 +51,13 @@ const Login = () => {
                                 <input onChange={(e)=>setPassword(e.target.value)} value={password} required className="w-full px-3 py-1.5 rounded outline-none border border-[#e3e3e3] focus:border-[#0955ff] text-black focus:text-[#02743a] placeholder:text-black" type="password" placeholder="Password"/>
                             </div>
                         </div>
-                        <div className="flex justify-center items-center">
-                            <button onClick={handleSubmit} disabled={isLoading} className="bg-[#0090D4] text-white px-5 py-2 rounded">
+                        <div className="">
+                            <button onClick={handleSubmit} disabled={isLoading} className="w-full bg-[#0090D4] text-white px-5 py-2 rounded disabled:cursor-not-allowed">
                                 {isLoading ? "Processing..." : "Login"}
                             </button>
                         </div>
 
                     </div>
-                    <div className="w-2/5 mt-5">
-                        <button onClick={()=>navigate('/register')} className="bg-[#0072bc] px-12 py-4 title text-white text-lg rounded  w-full">
-                            Create new account
-                        </button>
-                    </div>
-                </div>
             </section>
         </>
     );
