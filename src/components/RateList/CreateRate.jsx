@@ -1,10 +1,8 @@
-import {useDispatch} from "react-redux";
 import {useGetAllReceiveAccountQuery, useGetAllSendAccountQuery} from "../../redux/features/account/accountApi.js";
 import {useState} from "react";
 import {useCreateRateMutation} from "../../redux/features/rate/rateApi.js";
 
 const CreateRate = () => {
-    const dispatch = useDispatch();
     const {data:sendData} = useGetAllSendAccountQuery();
     const {data:sendAccounts} = sendData || {};
 
@@ -29,17 +27,18 @@ const CreateRate = () => {
         })
     }
 
+    //className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
 
     return (
         <>
-            <section id="main" className="py-10">
-                <h1 className="text-center font-bold text-3xl mb-3">Create Rate</h1>
-                <form onSubmit={handleCreate} className="px-12 bg-white w-auto overflow-x-auto grid grid-cols-4 gap-6">
+            <section id="main" className="py-6 shadow-md rounded">
+                <h1 className="text-center font-bold text-2xl md:text-3xl mb-5">Create a New Rate</h1>
+                <form onSubmit={handleCreate} className="px-4 md:px-12 bg-white w-auto overflow-x-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     <div>
                         <label className="block pb-2" htmlFor="send">
                             Select Send-Account
                         </label>
-                        <select onChange={(e)=>setSendAccountId(e.target.value)} value={sendAccountId} required id="send" className="w-full border rounded-md py-2 px-3 focus:outline-none focus:border-blue-500">
+                        <select onChange={(e)=>setSendAccountId(e.target.value)} value={sendAccountId} required id="send" className="w-full bg-white border rounded-md py-2 px-3 focus:outline-none focus:border-blue-500">
                             {sendAccounts?.length>0 &&(
                                 <>
                                     {
@@ -60,7 +59,7 @@ const CreateRate = () => {
                         <label className="block pb-2" htmlFor="receive">
                             Select Receive-Account
                         </label>
-                        <select onChange={(e)=>setReceiveAccountId(e.target.value)} value={receiveAccountId} className="w-full border rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" id="receive">
+                        <select onChange={(e)=>setReceiveAccountId(e.target.value)} value={receiveAccountId} className="w-full bg-white border rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" id="receive">
                             {receiveAccounts?.length>0 &&(
                                 <>
                                     {
@@ -91,8 +90,8 @@ const CreateRate = () => {
                         <input onChange={(e)=>setCurrent(e.target.value)} value={current} required className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md"
                                type="text" id="current"/>
                     </div>
-                    <div>
-                        <button type="submit" disabled={isLoading} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <div className="flex items-end">
+                        <button type="submit" disabled={isLoading} className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             {isLoading ? "Processing..." : "Create Rate"}
                         </button>
                     </div>

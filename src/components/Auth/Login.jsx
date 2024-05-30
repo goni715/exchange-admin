@@ -1,10 +1,10 @@
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {useLoginMutation} from "../redux/features/auth/authApi.js";
-import Error from "./validation/Error.jsx";
+import {useLoginMutation} from "../../redux/features/auth/authApi.js";
+import Error from "../validation/Error.jsx";
 import {useDispatch, useSelector} from "react-redux";
-import {SetLoginError} from "../redux/features/auth/authSlice.js";
-import {IsEmail} from "../helper/ValidationHelper.js";
+import {SetLoginError} from "../../redux/features/auth/authSlice.js";
+import {IsEmail} from "../../helper/ValidationHelper.js";
 
 const Login = () => {
     const navigate = useNavigate();

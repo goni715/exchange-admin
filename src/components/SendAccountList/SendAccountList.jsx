@@ -10,6 +10,7 @@ import {
     SetSendAccountId, SetSendAccountName
 } from "../../redux/features/account/accountSlice.js";
 import EditSendAccountModal from "../modal/EditSendAccountModal.jsx";
+import ListLoading from "../Loader/ListLoading.jsx";
 
 const columns = [
     {
@@ -40,22 +41,6 @@ const SendAccountList = () => {
     const sendAccounts = data?.data || [];
     const [updateSendAccountDisabled] = useUpdateSendAccountDisabledMutation();
 
-
-
-
-    //decision how to render
-    let content = null;
-
-    if (isLoading) {
-        content = <li className="m-2 text-center">Loading...</li>;
-    }
-
-    if (!isLoading && isError) {
-        content = (
-            <h1>some error occured</h1>
-        );
-
-    }
 
 
     const tableData = [];
@@ -114,12 +99,22 @@ const SendAccountList = () => {
 
     return (
         <>
-            {content}
-            <section id="main" className="py-10">
+            <section id="main" className="py-6">
                 <h1 className="text-center font-bold text-3xl mb-3">Send Account List</h1>
-                <div className="px-12 bg-white w-auto overflow-x-auto">
-                    <Table columns={columns} dataSource={tableData} />
-                </div>
+                {
+                    isLoading ? (
+                        <>
+                            <ListLoading/>
+                        </>
+                    ) : (
+                        <>
+
+                            <div className="w-auto overflow-x-auto">
+                                <Table columns={columns} dataSource={tableData}/>
+                            </div>
+                        </>
+                    )
+                }
             </section>
 
             <EditSendAccountModal/>

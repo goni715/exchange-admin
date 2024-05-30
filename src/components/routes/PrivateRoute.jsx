@@ -1,5 +1,5 @@
 import {Navigate} from "react-router-dom";
-import {getToken} from "../helper/SessionHelper.js";
+import {getToken} from "../../helper/SessionHelper.js";
 
 const PrivateRoute = ({children}) => {
 

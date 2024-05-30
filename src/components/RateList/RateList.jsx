@@ -5,6 +5,7 @@ import {SetCurrent, SetRateId, SetUnit} from "../../redux/features/rate/rateSlic
 import {SetRateModalOpen} from "../../redux/features/modal/modalSlice.js";
 import EditRateModal from "../modal/EditRateModal.jsx";
 import CreateRate from "./CreateRate.jsx";
+import ListLoading from "../Loader/ListLoading.jsx";
 
 const columns = [
     {
@@ -40,24 +41,7 @@ const RateList = () => {
 
 
 
-
-    //decision how to render
-    let content = null;
-
-    if (isLoading) {
-        content = <li className="m-2 text-center">Loading...</li>;
-    }
-
-    if (!isLoading && isError) {
-        content = (
-            <h1>some error occured</h1>
-        );
-
-    }
-
-
     const tableData = [];
-
 
 
 
@@ -96,12 +80,22 @@ const RateList = () => {
         <>
             <CreateRate/>
             <br/><br/>
-            {content}
-            <section id="main" className="py-10">
+            <section id="main" className="pb-6">
                 <h1 className="text-center font-bold text-3xl mb-3">Rate List</h1>
-                <div className="px-12 bg-white w-auto overflow-x-auto">
-                    <Table columns={columns} dataSource={tableData} />
-                </div>
+                {
+                    isLoading ? (
+                        <>
+                            <ListLoading/>
+                        </>
+                    ) : (
+                        <>
+
+                            <div className="w-auto overflow-x-auto">
+                                <Table columns={columns} dataSource={tableData}/>
+                            </div>
+                        </>
+                    )
+                }
             </section>
 
             <EditRateModal/>

@@ -6,6 +6,7 @@ import {
     useRemoveAdminMutation
 } from "../../redux/features/user/userApi.js";
 import {DeleteAlert} from "../../helper/DeleteAlert.js";
+import ListLoading from "../Loader/ListLoading.jsx";
 
 const columns = [
     {
@@ -38,21 +39,6 @@ const UserList = () => {
     const [deleteUser] = useDeleteUserMutation();
 
 
-
-
-    //decision how to render
-    let content = null;
-
-    if (isLoading) {
-        content = <li className="m-2 text-center">Loading...</li>;
-    }
-
-    if (!isLoading && isError) {
-        content = (
-            <h1>some error occured</h1>
-        );
-
-    }
 
 
     const tableData = [];
@@ -119,12 +105,23 @@ const UserList = () => {
 
     return (
         <>
-            {content}
-            <section id="main" className="py-10">
+
+            <section id="main" className="py-6">
                 <h1 className="text-center font-bold text-3xl mb-3">User List</h1>
-                <div className="px-12 bg-white w-auto overflow-x-auto">
-                    <Table columns={columns} dataSource={tableData} />
-                </div>
+                {
+                    isLoading ? (
+                        <>
+                            <ListLoading/>
+                        </>
+                    ) : (
+                        <>
+
+                            <div className="w-auto overflow-x-auto">
+                                <Table columns={columns} dataSource={tableData}/>
+                            </div>
+                        </>
+                    )
+                }
             </section>
         </>
     );
