@@ -11,7 +11,7 @@ const Information = () => {
     return (
         <>
             <section className="min-h-[80vh]">
-                <h1 className="text-center text-3xl font-bold mb-3">Exchange List</h1>
+                <h1 className="text-center text-3xl font-bold mb-3">Admin Information</h1>
                 <div className="flex items-center justify-center">
                 <div className="w-full md:w-[80%]">
                         <div className="flex flex-col sm:flex-row sm:items-center bg-[#f9f9f9] border-l border-r border-t border-b border-gray-300 py-3 px-2 justify-between rounded space-y-2">

@@ -1,6 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useGetExchangeQuery} from "../../redux/features/exchange/exchangeApi.js";
 import Details from "./Details.jsx";
+import DetailsLoading from "../Loader/DetailsLoading.jsx";
 
 const ExchangeDetails = () => {
     const {id} = useParams();
@@ -8,25 +9,28 @@ const ExchangeDetails = () => {
     const exchange = data?.data || {};
     const {receiveAccountId} = exchange || {};
 
-    // decide what to render
-    let content = null;
-    if (isLoading) content = "Loading...";
-
-    if (!isLoading && isError)
-        content = <div className="col-span-12">Something Went wrong</div>;
-
-    if (!isLoading && !isError && !exchange?._id) {
-        content = <div className="col-span-12">No Exchange found!</div>;
-    }
-
-
-    if (!isLoading && !isError && exchange?._id) {
-        content = <Details receiveAccountId={receiveAccountId} exchange={exchange}/>
-    }
 
     return (
         <>
-            {content}
+
+            <section className="min-h-[80vh] py-6">
+                <div className="flex items-center justify-center">
+                    <div className="w-full md:w-[80%]">
+                        {
+                            isLoading ? (
+                                <>
+                                    <DetailsLoading/>
+                                </>
+                            ) : (
+                                <>
+
+                                    <Details receiveAccountId={receiveAccountId} exchange={exchange}/>
+                                </>
+                            )
+                        }
+                    </div>
+                </div>
+            </section>
         </>
     );
 };

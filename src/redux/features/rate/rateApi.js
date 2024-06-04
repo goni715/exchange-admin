@@ -18,7 +18,7 @@ export const rateApi = apiSlice.injectEndpoints({
                         SuccessToast("Rate Create Success");
                     }
                 }catch(err) {
-                    console.log(err)
+                    //console.log(err)
                     const status = err?.error?.status;
                     if(status === 409){
                         ErrorToast("Already rate created between these!")
@@ -34,9 +34,9 @@ export const rateApi = apiSlice.injectEndpoints({
                 try{
                     const res = await queryFulfilled;
                 }catch(err) {
-                    ErrorToast("Something Went Wrong!");
+                    //ErrorToast("Something Went Wrong!");
                     //do nothing
-                    console.log(err);
+                    //console.log(err);
                 }
             },
         }),
@@ -54,7 +54,7 @@ export const rateApi = apiSlice.injectEndpoints({
                         // SuccessToast("Update Success");
                     }
                 }catch(err) {
-                    console.log(err)
+                    //console.log(err)
                 }
             }
         }),

@@ -36,62 +36,75 @@ const CityBankDetails = ({exchange}) => {
 
     return (
         <>
-            <section className="pt-6 pb-20">
-                <div className="flex items-center justify-center">
-                    <div className="w-[40%]">
-                        <div className="flex bg-[#f9f9f9] border-l border-r border-t border-b border-gray-300 py-3 px-2 justify-between rounded">
-                            <p>Exchange ID</p>
+
+                        <div
+                            className="flex flex-col sm:flex-row sm:items-center space-y-2 bg-[#f9f9f9] border-l border-r border-t border-b border-gray-300 py-3 px-2 justify-between rounded">
+                            <p className="font-bold">Exchange ID</p>
                             <p className="uppercase">{_id}</p>
                         </div>
-                        <div className="flex border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
-                            <p>User Name</p>
+                        <div
+                            className="flex flex-col sm:flex-row sm:items-center space-y-2 border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
+                            <p className="font-bold">User Name</p>
                             <p>{username}</p>
                         </div>
-                        <div className="flex bg-[#f9f9f9] border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
-                            <p>User Email</p>
+                        <div
+                            className="flex flex-col sm:flex-row sm:items-center space-y-2 bg-[#f9f9f9] border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
+                            <p className="font-bold">User Email</p>
                             <p>{userEmail}</p>
                         </div>
-                        <div className="flex border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
-                            <p>Transaction Number/Batch</p>
+                        <div
+                            className="flex flex-col sm:flex-row sm:items-center space-y-2 border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
+                            <p className="font-bold">Transaction Number/Batch</p>
                             <p>{transactionOrBatch}</p>
                         </div>
-                        <div className="flex bg-[#f9f9f9] border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
-                            <p>Email</p>
+                        <div
+                            className="flex flex-col sm:flex-row sm:items-center space-y-2 bg-[#f9f9f9] border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
+                            <p className="font-bold">Email</p>
                             <p>{email}</p>
                         </div>
-                        <div className="flex border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
-                            <p>Send Account Name</p>
+                        <div
+                            className="flex flex-col sm:flex-row sm:items-center space-y-2 border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
+                            <p className="font-bold">Send Account Name</p>
                             <p>{sendAccountName}</p>
                         </div>
-                        <div className="flex bg-[#f9f9f9] border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
-                            <p>Receive Account Name</p>
+                        <div
+                            className="flex flex-col sm:flex-row sm:items-center space-y-2 bg-[#f9f9f9] border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
+                            <p className="font-bold">Receive Account Name</p>
                             <p>{receiveAccountName}</p>
                         </div>
-                        <div className="flex border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
-                            <p>Send Amount</p>
+                        <div
+                            className="flex flex-col sm:flex-row sm:items-center space-y-2 border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
+                            <p className="font-bold">Send Amount</p>
                             <p>{sendAmount}</p>
                         </div>
-                        <div className="flex bg-[#f9f9f9] border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
-                            <p>Receive Amount</p>
+                        <div
+                            className="flex flex-col sm:flex-row sm:items-center space-y-2 bg-[#f9f9f9] border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
+                            <p className="font-bold">Receive Amount</p>
                             <p>{receiveAmount}</p>
                         </div>
-                        <div className="flex border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
-                            <p>City Bank Account Name</p>
+                        <div
+                            className="flex flex-col sm:flex-row sm:items-center space-y-2 border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
+                            <p className="font-bold">City Bank Account Name</p>
                             <p>{accountName}</p>
                         </div>
-                        <div className="flex bg-[#f9f9f9] border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
-                            <p>City Bank Account Number</p>
+                        <div
+                            className="flex flex-col sm:flex-row sm:items-center space-y-2 bg-[#f9f9f9] border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
+                            <p className="font-bold">City Bank Account Number</p>
                             <p>{accountNumber}</p>
                         </div>
-                        <div className="flex border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
-                            <p>Contact Number</p>
+                        <div
+                            className="flex flex-col sm:flex-row sm:items-center space-y-2 border-l border-r border-b border-gray-300 py-3 px-2 justify-between rounded">
+                            <p className="font-bold">Contact Number</p>
                             <p>{contactNumber}</p>
                         </div>
 
-                        <div className="flex justify-between mt-8">
-                            <div className="w-1/2">
+                        <div className="flex flex-col md:flex-row justify-between gap-6 mt-8">
+                            <div className="w-full md:w-1/2">
                                 <label className="block pb-2 font-bold" htmlFor="status">Change Status</label>
-                                <select key={Date.now()} defaultValue={status} onChange={(e)=>handleUpdateStatus(e.target.value,_id)} className="w-full border rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" id="status">
+                                <select key={Date.now()} defaultValue={status}
+                                        onChange={(e) => handleUpdateStatus(e.target.value, _id)}
+                                        className="w-full border rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                                        id="status">
                                     <option value="Pending">Pending</option>
                                     <option value="Processing">Processing</option>
                                     <option value="Cancelled">Cancelled</option>
@@ -102,13 +115,13 @@ const CityBankDetails = ({exchange}) => {
                                     <option value="Awaiting Confirmation">Awaiting Confirmation</option>
                                 </select>
                             </div>
-                            <button disabled={isLoading} onClick={()=>handleSendEmail(userEmail)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                {isLoading ? "Sending..." : "Send Confirmation Email"}
-                            </button>
+                            <div className="flex items-end w-full md:w-1/2">
+                                <button disabled={isLoading} onClick={() => handleSendEmail(userEmail)}
+                                        className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                    {isLoading ? "Sending..." : "Send Confirmation Email"}
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </section>
         </>
     );
 };

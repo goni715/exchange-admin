@@ -16,8 +16,8 @@ export const exchangeApi = apiSlice.injectEndpoints({
                         SuccessToast("Confirm Email Send Success");
                     }
                 }catch(err) {
-                    console.log(err)
-                    ErrorToast("Something Went Wrong");
+                    // console.log(err)
+                    // ErrorToast("Something Went Wrong");
                 }
             }
         }),
@@ -30,9 +30,9 @@ export const exchangeApi = apiSlice.injectEndpoints({
                     const res = await queryFulfilled;
                     // const data = res?.data?.data;
                 }catch(err) {
-                    ErrorToast("Something Went Wrong!");
+                    // ErrorToast("Something Went Wrong!");
                     //do nothing
-                    console.log(err);
+                    // console.log(err);
                 }
             },
         }),
@@ -45,9 +45,9 @@ export const exchangeApi = apiSlice.injectEndpoints({
                     const res = await queryFulfilled;
                     // const data = res?.data?.data;
                 }catch(err) {
-                    ErrorToast("Something Went Wrong!");
+                    //ErrorToast("Something Went Wrong!");
                     //do nothing
-                    console.log(err);
+                    //console.log(err);
                 }
             },
         }),
@@ -62,9 +62,9 @@ export const exchangeApi = apiSlice.injectEndpoints({
                     const res = await queryFulfilled;
                     // const data = res?.data?.data;
                 }catch(err) {
-                    ErrorToast("Something Went Wrong!");
+                    //ErrorToast("Something Went Wrong!");
                     //do nothing
-                    console.log(err);
+                    //console.log(err);
                 }
             },
         }),
@@ -86,7 +86,7 @@ export const exchangeApi = apiSlice.injectEndpoints({
                         SuccessToast("Exchange Status Update Success");
                     }
                 }catch(err) {
-                    console.log(err)
+                    //console.log(err)
                 }
             }
         }),

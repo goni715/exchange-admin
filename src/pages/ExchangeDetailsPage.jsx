@@ -15,6 +15,7 @@ const ExchangeDetailsPage = () => {
     }, [pathname]);
     return (
         <>
+
             <ExchangeDetails/>
 
         </>

@@ -12,9 +12,9 @@ export const informationApi = apiSlice.injectEndpoints({
                 try{
                     const res = await queryFulfilled;
                 }catch(err) {
-                    ErrorToast("Something Went Wrong!");
+                    //ErrorToast("Something Went Wrong!");
                     //do nothing
-                    console.log(err);
+                    //console.log(err);
                 }
             },
         }),
@@ -32,7 +32,7 @@ export const informationApi = apiSlice.injectEndpoints({
                         SuccessToast("Information Update Success");
                     }
                 }catch(err) {
-                    console.log(err)
+                    //console.log(err)
                 }
             }
         }),

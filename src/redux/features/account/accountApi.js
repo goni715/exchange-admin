@@ -12,9 +12,9 @@ export const accountApi = apiSlice.injectEndpoints({
                 try{
                     const res = await queryFulfilled;
                 }catch(err) {
-                    ErrorToast("Something Went Wrong!");
+                    //ErrorToast("Something Went Wrong!");
                     //do nothing
-                    console.log(err);
+                    //console.log(err);
                 }
             },
         }),
@@ -26,9 +26,9 @@ export const accountApi = apiSlice.injectEndpoints({
                 try{
                     const res = await queryFulfilled;
                 }catch(err) {
-                    ErrorToast("Something Went Wrong!");
+                    // ErrorToast("Something Went Wrong!");
                     //do nothing
-                    console.log(err);
+                    //console.log(err);
                 }
             },
         }),
@@ -48,7 +48,7 @@ export const accountApi = apiSlice.injectEndpoints({
                         SuccessToast("Update Success");
                     }
                 }catch(err) {
-                    console.log(err)
+                    // console.log(err)
                     if(err?.error?.data?.data?.keyPattern){
                         if(err?.error?.data?.data?.keyPattern['name'] === 1){
                             ErrorToast("This Account Already Exist")
@@ -73,7 +73,7 @@ export const accountApi = apiSlice.injectEndpoints({
                         SuccessToast("Update Success");
                     }
                 }catch(err) {
-                    console.log(err)
+                    //console.log(err)
                 }
             }
         }),
@@ -93,7 +93,7 @@ export const accountApi = apiSlice.injectEndpoints({
                         SuccessToast("Update Success");
                     }
                 }catch(err) {
-                    console.log(err)
+                    //console.log(err)
                     if(err?.error?.data?.data?.keyPattern){
                         if(err?.error?.data?.data?.keyPattern['name'] === 1){
                             ErrorToast("This Account Already Exist")
@@ -118,7 +118,7 @@ export const accountApi = apiSlice.injectEndpoints({
                         SuccessToast("Update Success");
                     }
                 }catch(err) {
-                    console.log(err)
+                    //console.log(err)
                 }
             }
         }),

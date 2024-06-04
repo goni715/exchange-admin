@@ -29,7 +29,7 @@ export const authApi = apiSlice.injectEndpoints({
                     }else if(status === 400){
                         dispatch(SetLoginError(err?.error?.data?.data));
                     }else{
-                        dispatch(SetLoginError("Something Went Wrong!"));
+                        //dispatch(SetLoginError("Something Went Wrong!"));
                     }
                 }
             }

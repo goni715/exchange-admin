@@ -18,7 +18,7 @@ export const contactApi = apiSlice.injectEndpoints({
                         dispatch(SetContactSuccess(true));
                     }
                 }catch(err) {
-                    ErrorToast("Something went wrong!")
+                    //ErrorToast("Something went wrong!")
                 }
             }
         }),
@@ -30,9 +30,9 @@ export const contactApi = apiSlice.injectEndpoints({
                 try{
                     const res = await queryFulfilled;
                 }catch(err) {
-                    ErrorToast("Something Went Wrong!");
+                    //ErrorToast("Something Went Wrong!");
                     //do nothing
-                    console.log(err);
+                    //console.log(err);
                 }
             },
         }),
@@ -50,7 +50,7 @@ export const contactApi = apiSlice.injectEndpoints({
                         SuccessToast("Contact Status Update Success");
                     }
                 }catch(err) {
-                    console.log(err)
+                    // console.log(err)
                 }
             }
         }),
