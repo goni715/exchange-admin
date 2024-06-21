@@ -10,7 +10,7 @@ import ListLoading from "../Loader/ListLoading.jsx";
 
 const columns = [
     {
-        title: "SNo",
+        title: "S.N.",
         dataIndex: "key",
     },
     {
@@ -116,8 +116,8 @@ const UserList = () => {
                     ) : (
                         <>
 
-                            <div className="w-auto overflow-x-auto">
-                                <Table columns={columns} dataSource={tableData}/>
+                            <div className="p-2 shadow-md rounded-md">
+                                    <Table columns={columns} dataSource={tableData} scroll={{x:true, y: 400}}/>
                             </div>
                         </>
                     )

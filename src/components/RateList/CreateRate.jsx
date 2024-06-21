@@ -31,7 +31,7 @@ const CreateRate = () => {
 
     return (
         <>
-            <section id="main" className="py-6 shadow-md rounded">
+            <section id="main" className="py-3 shadow-md rounded">
                 <h1 className="text-center font-bold text-2xl md:text-3xl mb-5">Create a New Rate</h1>
                 <form onSubmit={handleCreate} className="px-4 md:px-12 bg-white w-auto overflow-x-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     <div>

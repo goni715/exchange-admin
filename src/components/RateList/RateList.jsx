@@ -6,10 +6,11 @@ import {SetRateModalOpen} from "../../redux/features/modal/modalSlice.js";
 import EditRateModal from "../modal/EditRateModal.jsx";
 import CreateRate from "./CreateRate.jsx";
 import ListLoading from "../Loader/ListLoading.jsx";
+import RateListLoading from "../Loader/RateListLoading.jsx";
 
 const columns = [
     {
-        title: "SNo",
+        title: "S.N.",
         dataIndex: "key",
     },
     {
@@ -79,19 +80,19 @@ const RateList = () => {
     return (
         <>
             <CreateRate/>
-            <br/><br/>
-            <section id="main" className="pb-6">
+            <br/>
+            <section id="main" className="">
                 <h1 className="text-center font-bold text-3xl mb-3">Rate List</h1>
                 {
                     isLoading ? (
                         <>
-                            <ListLoading/>
+                            <RateListLoading/>
                         </>
                     ) : (
                         <>
 
-                            <div className="w-auto overflow-x-auto">
-                                <Table columns={columns} dataSource={tableData}/>
+                            <div className="p-2 shadow-md rounded-md">
+                                <Table columns={columns} dataSource={tableData} scroll={{x: true, y: 280}}/>
                             </div>
                         </>
                     )
