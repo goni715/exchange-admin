@@ -110,7 +110,9 @@ const ReceiveAccountList = () => {
                         <>
 
                             <div className="p-2 shadow-md rounded-md">
-                                <Table columns={columns} dataSource={tableData} scroll={{x: true, y: 400}}/>
+                                <div className="w-auto overflow-x-auto">
+                                    <Table columns={columns} dataSource={tableData} scroll={{y: 400}}/>
+                                </div>
                             </div>
                         </>
                     )

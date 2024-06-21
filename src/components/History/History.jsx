@@ -84,7 +84,7 @@ const History = () => {
                     ) : (
                         <>
 
-                            <div className="p-2 shadow-md rounded-md min-w-[1200px] overflow-x-scroll">
+                            <div className="p-2 shadow-md rounded-md">
                                 <Table columns={columns} dataSource={tableData} scroll={{x:true, y: 400}}/>
                             </div>
                         </>

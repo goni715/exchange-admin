@@ -95,7 +95,7 @@ const ExchangeList = () => {
                         <>
 
                             <div className="p-2 shadow-md rounded-md">
-                                <Table style={{minWidth:1200}} columns={columns} dataSource={tableData} scroll={{x: true, y: 400}}/>
+                                <Table columns={columns} dataSource={tableData} scroll={{x: true, y: 400}}/>
                             </div>
                         </>
                     )
