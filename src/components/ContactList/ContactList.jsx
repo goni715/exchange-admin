@@ -85,9 +85,7 @@ const ContactList = () => {
                         <>
 
                             <div className="p-2 shadow-md rounded-md">
-                                <div className="w-auto overflow-x-auto">
-                                    <Table columns={columns} dataSource={tableData} scroll={{y: 400}}/>
-                                </div>
+                                <Table columns={columns} dataSource={tableData} scroll={{x:true,y: 400}}/>
                             </div>
                         </>
                     )
